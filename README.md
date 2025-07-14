@@ -1,11 +1,10 @@
-README.md
+# README.md
 
-```markdown
+
 # ✅ Techstax Dev Assessment – Webhook Receiver (Final Submission)
-
+```markdown
 This Flask-based application receives GitHub webhook events (`push`, `pull_request`, and `merge`), stores them in MongoDB, and displays them live on a frontend UI that refreshes every 15 seconds.
 
----
 
 ## 🚀 Features Implemented
 
@@ -19,7 +18,6 @@ This Flask-based application receives GitHub webhook events (`push`, `pull_reque
 
 - Modular Flask blueprint architecture
 
----
 
 ## 🧱 Tech Stack
 
@@ -29,7 +27,6 @@ This Flask-based application receives GitHub webhook events (`push`, `pull_reque
 - HTML + JavaScript
 - Ngrok (for testing webhooks from GitHub)
 
----
 ```
 ## 🛠 Setup Instructions
 
