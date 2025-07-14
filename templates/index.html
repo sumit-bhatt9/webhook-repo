@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Webhook Events</title>
+  <script>
+    async function fetchEvents() {
+      const res = await fetch('/webhook/events');
+      const data = await res.json();
+      const list = document.getElementById('events');
+      list.innerHTML = '';
+
+      data.forEach(event => {
+        const date = new Date(event.timestamp).toUTCString();
+        let msg = '';
+
+        if (event.type === 'push') {
+          msg = `${event.author} pushed to ${event.to_branch} on ${date}`;
+        } else if (event.type === 'pull_request') {
+          msg = `${event.author} submitted a pull request from ${event.from_branch} to ${event.to_branch} on ${date}`;
+        } else if (event.type === 'merge') {
+          msg = `${event.author} merged branch ${event.from_branch} to ${event.to_branch} on ${date}`;
+        }
+
+        const item = document.createElement('li');
+        item.textContent = msg;
+        list.appendChild(item);
+      });
+    }
+
+    setInterval(fetchEvents, 15000);
+    window.onload = fetchEvents;
+  </script>
+</head>
+<body>
+  <h1>Recent GitHub Events</h1>
+  <ul id="events"></ul>
+</body>
+</html>

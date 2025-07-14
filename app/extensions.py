@@ -1,4 +1,8 @@
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 
-# Setup MongoDB here
-# mongo = PyMongo(uri="mongodb://localhost:27017/database")
+client = MongoClient("mongodb://localhost:27017/")
+db = client["github"]
+collection = db["events"]
+
+def get_collection():
+    return collection
